@@ -1,6 +1,6 @@
 package Generics;
 
-public class GenericMethod {
+public class GenericMethod<T> {
 
     /**
      * Generic constructors
@@ -20,4 +20,5 @@ public class GenericMethod {
     public <X extends String> X getSelf(X obj) {
         return obj;
     }
+
 }

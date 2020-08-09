@@ -5,6 +5,7 @@ public class TypeSafety<T> {
 
     public TypeSafety(T o) {
         obj = o;
+
     }
 
     public String getTypeOfObj() {
