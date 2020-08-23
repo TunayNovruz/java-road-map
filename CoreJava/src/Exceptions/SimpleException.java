@@ -21,6 +21,10 @@ public class SimpleException {
         }
     }
 
+    /***
+     *
+     * @throws Exception
+     */
     public static void testEx () throws Exception{
         System.out.println("zzz");
         throw new Exception("exception message",new ArithmeticException("this is cause"));

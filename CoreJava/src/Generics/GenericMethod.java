@@ -17,6 +17,11 @@ public class GenericMethod<T> {
         System.out.println(res);
     }
 
+    /***
+     *
+     * @param obj type of X
+     * @return obj type of X
+     */
     public <X extends String> X getSelf(X obj) {
         return obj;
     }

@@ -9,6 +9,7 @@ public class GarbageCollector {
     public static void main(String[] args) {
         visualVmTest();
         //getGCInfo();
+        System.gc();
     }
 
     public static void getGCInfo() {
@@ -28,6 +29,9 @@ public class GarbageCollector {
         }
     }
 
+    /***
+     *
+     */
     public static void visualVmTest() {
         bigObj objs[] = new bigObj[10000000];
         for (int i = 0; i <10000000 ; i++) {

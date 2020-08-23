@@ -3,6 +3,10 @@ package Generics;
 public class WildCardTest<X extends Number> {
     X[] nums;
 
+    /***
+     *
+     * @param data
+     */
     public WildCardTest(X[] data){
         nums = data;
     }
