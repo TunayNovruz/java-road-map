@@ -45,28 +45,24 @@ public class LetterCombinationsOfPhoneNumber {
             return result;
         if (len == 1)
             result.addAll(Arrays.asList(letters[nums.get(0)]));
-        else
-            findCombination(nums, letters, result);
+        else {
+            findCombination(0, "", nums, letters, result);
+        }
         return result;
     }
 
-    public static void findCombination(ArrayList<Integer> nums, String[][] letters, List<String> result) {
-        String[] temp = letters[nums.get(0)];
-        for (String s : temp)
-            for (int i = 1; i < nums.size(); i++)
-                for (String s2 : letters[nums.get(i)])
-                    for (int j = i + 1; j < nums.size(); j++)
-                        for (String s3 : letters[nums.get(j)])
-                            result.add(s + s2 + s3);
+    public static void findCombination(int k, String letter, ArrayList<Integer> nums, String[][] letters, List<String> result) {
 
-        nums.remove(0);
-        if (nums.size() == 0)
+        if (k >= nums.size()) {
+            result.add(letter);
             return;
-        findCombination(nums, letters, result);
-
-    }
-
-    public void iterateLetters() {
-        
+        }
+        int n = nums.get(k);
+        String[] temps = letters[n];
+        for (String temp : temps) {
+            if (letter.length() > 0 && letter.charAt(letter.length() - 1) == 'b' && temp.equals("d"))
+                continue;
+            findCombination(k + 1, letter + temp, nums, letters, result);
+        }
     }
 }
