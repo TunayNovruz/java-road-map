@@ -25,8 +25,9 @@ public class TreeNode {
     }
 
     public static void printTree(TreeNode node) {
-        if (node == null)
+        if (node == null) {
             return;
+        }
         System.out.println(node.val);
         printTree(node.left);
         printTree(node.right);
