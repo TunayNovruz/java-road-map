@@ -10,19 +10,24 @@ import leetcode.TreeNode;
 
 // TODO UNSOLVED
 public class ConvertSortedArrayToBinarySearchTree {
-    public TreeNode sortedArrayToBST(int[] nums) {
 
-        int mid = (nums.length - 1) / 2;
-        TreeNode root = new TreeNode(nums[mid]);
-        int left = mid - 1, right = mid + 1;
-        for (int i = 0; i < mid; i++) {
-            if (left >= 0)
-                addToTree(root, nums[left--]);
-            if (right < nums.length)
-                addToTree(root, nums[right++]);
-        }
+    public static void main(String[] args) {
+        TreeNode.printTree(sortedArrayToBST(new int[]{-10, -3, 0, 5, 9, 7, 6}));
+    }
 
-        return root;
+    public static TreeNode sortedArrayToBST(int[] nums) {
+        return buildTree(0, nums.length, nums);
+    }
+
+    public static TreeNode buildTree(int start, int end, int[] nums) {
+        if (start == end) return null;
+        int mid = (end + start) / 2;
+        TreeNode node = new TreeNode(nums[mid]);
+        if (mid > start)
+            node.left = buildTree(start, mid, nums);
+        if (end > mid)
+            node.right = buildTree(mid + 1, end, nums);
+        return node;
     }
 
     public void addToTree(TreeNode node, int val) {
