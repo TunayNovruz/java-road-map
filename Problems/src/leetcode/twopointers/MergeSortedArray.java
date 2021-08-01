@@ -7,26 +7,20 @@
 package leetcode.twopointers;
 
 public class MergeSortedArray {
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
+    public void nums1(int[] nums1, int m, int[] nums2, int n) {
         if (n == 0) return;
-        int[] merge = new int[m + n];
-        int p1 = 0;
-        int p2 = 0;
-
-        for (int i = 0; i < m + n; i++) {
-            if (p2 < n && nums2[p2] < nums1[p1]) {
-                merge[i] = nums2[p2];
-                p2++;
-            } else if (p1 < m) {
-                merge[i] = nums1[p1];
-                p1++;
-            }
-
+        if (m == 0) {
+            while (n >= 0)
+                nums1[--n] = nums2[n];
+            return;
         }
-
-        for (int num : merge) {
-            System.out.println(num);
-        }
-        nums1 = merge;
+        int count = m + n - 1;
+        n--;
+        m--;
+        while (m >= 0 && n >= 0)
+            if (nums2[n] > nums1[m]) nums1[count--] = nums2[n--];
+            else nums1[count--] = nums1[m--];
+        while (n >= 0)
+            nums1[count--] = nums2[n--];
     }
 }
