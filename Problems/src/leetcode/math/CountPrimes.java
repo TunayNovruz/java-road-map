@@ -8,11 +8,16 @@ package leetcode.math;
 
 public class CountPrimes {
     public int countPrimes(int n) {
-        if (n < 2) return 0;
-        if (n == 2) return 1;
-        int primeCount = 1;
-        for (int i = 3; i < n; i += 2)
-            if (isPrime(i)) primeCount++;
+        if (n < 3) return 0;
+        int[] nonPrimes = new int[n];
+        for (int i = 2; i < n; i++)
+            for (int j = 2 * i; j < n && nonPrimes[j] == 0; j += i) {
+                nonPrimes[j] = 1;
+            }
+
+        int primeCount = 0;
+        for (int i = 2; i < n; i++)
+            if (nonPrimes[i] == 0) primeCount++;
         return primeCount;
     }
 
